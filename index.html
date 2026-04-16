@@ -1,7 +1,61 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kahani Tree — Website Wireframes</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f5f4f0;
+    --color-background-tertiary: #eeece6;
+    --color-background-info: #e6f1fb;
+    --color-background-success: #eaf3de;
+    --color-background-warning: #faeeda;
+    --color-text-primary: #2c2c2a;
+    --color-text-secondary: #5f5e5a;
+    --color-text-tertiary: #888780;
+    --color-border-tertiary: rgba(44,44,42,0.15);
+    --color-border-secondary: rgba(44,44,42,0.3);
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: #1a1a18;
+      --color-background-secondary: #242422;
+      --color-background-tertiary: #2c2c2a;
+      --color-background-info: #042c53;
+      --color-background-success: #173404;
+      --color-background-warning: #412402;
+      --color-text-primary: #e8e6de;
+      --color-text-secondary: #b4b2a9;
+      --color-text-tertiary: #888780;
+      --color-border-tertiary: rgba(232,230,222,0.15);
+      --color-border-secondary: rgba(232,230,222,0.3);
+    }
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
+    padding: 40px 24px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+  .doc-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 40px;
+  }
   .page-section { margin-bottom: 40px; }
   .page-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; padding-left: 2px; }
   .page-frame { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); overflow: hidden; }
@@ -21,10 +75,7 @@
   .block.fill-accent { background: var(--color-background-info); }
   .block.fill-soft { background: var(--color-background-success); }
   .block.fill-warm { background: var(--color-background-warning); }
-  .block.fill-hero {
-    background: var(--color-background-tertiary);
-    min-height: 100px;
-  }
+  .block.fill-hero { background: var(--color-background-tertiary); min-height: 100px; }
   .w-full { width: 100%; }
   .w-half { width: 50%; }
   .w-third { width: 33.33%; }
@@ -39,333 +90,283 @@
   .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; border-top: 0.5px solid var(--color-border-tertiary); }
   .grid-6 { display: grid; grid-template-columns: repeat(6,1fr); border-top: 0.5px solid var(--color-border-tertiary); }
   .grid-2 .block, .grid-3 .block, .grid-4 .block, .grid-6 .block { border-top: none; }
-  .nav-block {
-    display: flex; gap: 0; border-bottom: 0.5px solid var(--color-border-secondary);
-  }
-  .nav-item {
-    flex: 1; text-align: center; padding: 6px 4px;
-    font-size: 9px; font-weight: 500; color: var(--color-text-secondary);
-    border-right: 0.5px solid var(--color-border-tertiary);
-  }
+  .nav-block { display: flex; gap: 0; border-bottom: 0.5px solid var(--color-border-secondary); }
+  .nav-item { flex: 1; text-align: center; padding: 6px 4px; font-size: 9px; font-weight: 500; color: var(--color-text-secondary); border-right: 0.5px solid var(--color-border-tertiary); }
   .nav-item:last-child { border-right: none; }
   .nav-item.logo { flex: 1.5; font-weight: 500; color: var(--color-text-primary); font-size: 10px; }
-  .cta-pill {
-    display: inline-block;
-    border: 0.5px solid var(--color-border-secondary);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 9px;
-    color: var(--color-text-secondary);
-    margin-top: 4px;
-  }
-  .img-placeholder {
-    width: 100%; height: 100%; min-height: inherit;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .img-placeholder::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 6px,
-      var(--color-border-tertiary) 6px,
-      var(--color-border-tertiary) 7px
-    );
-    opacity: 0.4;
-  }
+  .cta-pill { display: inline-block; border: 0.5px solid var(--color-border-secondary); border-radius: 20px; padding: 3px 10px; font-size: 9px; color: var(--color-text-secondary); margin-top: 4px; }
+  .img-placeholder { width: 100%; height: 100%; min-height: inherit; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .img-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 6px, var(--color-border-tertiary) 6px, var(--color-border-tertiary) 7px); opacity: 0.4; }
   .img-placeholder .blabel { position: relative; z-index: 1; }
-  .section-divider {
-    width: 100%;
-    border-top: 0.5px solid var(--color-border-tertiary);
-  }
-  .carousel-dots {
-    display: flex; gap: 4px; justify-content: center; margin-top: 4px;
-  }
+  .carousel-dots { display: flex; gap: 4px; justify-content: center; margin-top: 4px; }
   .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-border-secondary); }
   .dot.active { background: var(--color-text-tertiary); }
 </style>
+</head>
+<body>
 
-<div style="padding: 0 0 20px; max-width: 680px;">
+<h1>Kahani Tree — Website Wireframes</h1>
+<p class="doc-sub">Block wireframes for all 7 pages · Based on web copy doc</p>
 
-  <!-- NAV (shared) -->
-  <div style="margin-bottom: 24px;">
-    <div style="font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; padding-left: 2px;">Global navigation</div>
-    <div style="border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); overflow: hidden;">
-      <div class="nav-block" style="border-bottom: none;">
-        <div class="nav-item logo">Kahani Tree</div>
-        <div class="nav-item">About</div>
-        <div class="nav-item">Visit</div>
-        <div class="nav-item">Events</div>
-        <div class="nav-item">Schools</div>
-        <div class="nav-item">Outreach</div>
-        <div class="nav-item">Books</div>
-      </div>
+<!-- NAV (shared) -->
+<div style="margin-bottom: 24px;">
+  <div class="page-label">Global navigation</div>
+  <div style="border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); overflow: hidden;">
+    <div class="nav-block" style="border-bottom: none;">
+      <div class="nav-item logo">Kahani Tree</div>
+      <div class="nav-item">About</div>
+      <div class="nav-item">Visit</div>
+      <div class="nav-item">Events</div>
+      <div class="nav-item">Schools</div>
+      <div class="nav-item">Outreach</div>
+      <div class="nav-item">Books</div>
     </div>
   </div>
-
-  <!-- PAGE 1: HOMEPAGE -->
-  <div class="page-section">
-    <div class="page-label">01 — Homepage</div>
-    <div class="page-frame">
-
-      <!-- Hero -->
-      <div class="block fill-hero h-hero w-full img-placeholder">
-        <div class="col" style="align-items:center; gap:4px; position:relative; z-index:1;">
-          <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">Magic Awaits You</div>
-          <div class="bsub">Feel the colors. See the sound. Smell the paper. Touch the story.</div>
-          <div class="cta-pill">Welcome to Kahani Tree</div>
-        </div>
-      </div>
-
-      <!-- Founder quote -->
-      <div class="block fill-mid h-lg w-full">
-        <div class="blabel" style="font-style:italic; max-width:80%;">"We believe that stories are magical and expand a child's imagination." — Sangeeta</div>
-        <div style="display:flex; gap:8px; margin-top:6px;">
-          <div class="cta-pill">Our Story</div>
-          <div class="cta-pill">Take a Tour</div>
-        </div>
-      </div>
-
-      <!-- Values + Stats -->
-      <div class="row">
-        <div class="block fill-soft h-lg w-half">
-          <div class="blabel">Celebrating Differences</div>
-          <div class="bsub">Our differences make us stronger</div>
-        </div>
-        <div class="col" style="width:50%;">
-          <div class="grid-3" style="border: none; border-top: 0.5px solid var(--color-border-tertiary); border-left: 0.5px solid var(--color-border-tertiary);">
-            <div class="block fill-mid h-sm"><div class="blabel">22+</div><div class="bsub">Indian Publishers</div></div>
-            <div class="block fill-mid h-sm"><div class="blabel">15+</div><div class="bsub">Intl Publishers</div></div>
-            <div class="block fill-mid h-sm"><div class="blabel">9</div><div class="bsub">Languages</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Collections carousel -->
-      <div class="block fill-mid h-md w-full">
-        <div class="blabel">Collections Carousel</div>
-        <div class="bsub">Celebrating Differences · Resilience · Kahani Favourites · Sangeeta Recommends · Breaking Stereotypes</div>
-        <div class="carousel-dots" style="margin-top:6px;">
-          <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        </div>
-      </div>
-
-      <!-- Impact -->
-      <div class="block fill-dark h-md w-full">
-        <div class="blabel">Impact Numbers</div>
-        <div class="grid-6" style="border:none; margin-top:6px; width:100%;">
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">5,000+</div><div class="bsub">Families</div></div>
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">500+</div><div class="bsub">Schools</div></div>
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">1,000+</div><div class="bsub">Books</div></div>
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">20 yrs</div><div class="bsub">Running</div></div>
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">100+</div><div class="bsub">Story Bags</div></div>
-          <div class="block" style="border:none; padding:2px;"><div class="blabel">∞</div><div class="bsub">Events</div></div>
-        </div>
-      </div>
-
-      <!-- Preview cards row: Events + Schools -->
-      <div class="row">
-        <div class="block fill-mid h-lg w-half">
-          <div class="blabel">Get Your Story On</div>
-          <div class="bsub">Saturday Storytime, festivals, book clubs, workshops</div>
-          <div class="cta-pill">Explore Book Events</div>
-        </div>
-        <div class="block fill-soft h-lg w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel">Once Upon a Library</div>
-          <div class="bsub">Schools, author visits, Book Weeks</div>
-          <div class="cta-pill">Learn More</div>
-        </div>
-      </div>
-
-      <!-- Raise Readers + Story Bags -->
-      <div class="row">
-        <div class="block fill-accent h-md w-half">
-          <div class="blabel">We Don't Just Sell Books. We Raise Readers.</div>
-          <div class="bsub">It takes a village to raise one.</div>
-        </div>
-        <div class="block fill-warm h-md w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel">Story Bags</div>
-          <div class="bsub">100 handpicked books, portable mini-libraries</div>
-          <div class="cta-pill">Gift a Story Bag</div>
-        </div>
-      </div>
-
-      <!-- Testimonials -->
-      <div class="block fill-mid h-md w-full img-placeholder">
-        <div class="blabel" style="position:relative; z-index:1;">Testimonials Carousel</div>
-        <div class="carousel-dots" style="position:relative; z-index:1; margin-top:6px;">
-          <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
-        </div>
-      </div>
-
-      <!-- Final CTA -->
-      <div class="block fill-dark h-lg w-full">
-        <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">Be Part of the Story</div>
-        <div class="bsub">Visit, attend sessions, explore workshops, support Story Bags</div>
-        <div class="cta-pill">Join Us — Magic Awaits You</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- PAGE 2: ABOUT US -->
-  <div class="page-section">
-    <div class="page-label">02 — About Us</div>
-    <div class="page-frame">
-      <div class="block fill-hero h-hero w-full img-placeholder">
-        <div class="blabel" style="position:relative; z-index:1;">Full-screen hero image</div>
-      </div>
-      <div class="block fill-mid h-lg w-full">
-        <div class="blabel">Mumbai's beloved children's bookshop</div>
-        <div class="bsub">Curated picture books, graphic novels, diverse titles from India and beyond</div>
-      </div>
-      <div class="row">
-        <div class="block fill-soft h-xl w-half">
-          <div class="blabel">Founder Story</div>
-          <div class="bsub">2006 — Sangeeta recognized the lack of diverse Indian children's books. Kahani Tree began sourcing from across the country.</div>
-        </div>
-        <div class="block fill-mid h-xl w-half img-placeholder" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel" style="position:relative; z-index:1;">Founder photo</div>
-        </div>
-      </div>
-      <div class="block fill-accent h-md w-full">
-        <div class="blabel" style="font-style: italic;">"Visitors come for stories and leave with magic."</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGE 3: BOOK EVENTS -->
-  <div class="page-section">
-    <div class="page-label">03 — Book Events</div>
-    <div class="page-frame">
-      <div class="block fill-hero h-hero w-full img-placeholder">
-        <div class="blabel" style="position:relative; z-index:1;">Book Events Hero</div>
-      </div>
-      <div class="row">
-        <div class="block fill-soft h-xl w-third">
-          <div class="blabel">Meet the Storytellers</div>
-          <div class="bsub">Authors bring stories to life through interactive sessions</div>
-          <div class="cta-pill">Join Us for Storytime</div>
-        </div>
-        <div class="block fill-mid h-xl w-third" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel">Festival Partners</div>
-          <div class="bsub">Kala Ghoda, Peek-a-Book, Royal Opera House</div>
-        </div>
-        <div class="block fill-warm h-xl w-third" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel">It Takes a Village</div>
-          <div class="bsub">BookTalk workshops for parents and educators</div>
-          <div class="cta-pill">Join a BookTalk</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGE 4: BOOKS & GIFTS -->
-  <div class="page-section">
-    <div class="page-label">04 — Books & Gifts</div>
-    <div class="page-frame">
-      <div class="block fill-dark h-xl w-full img-placeholder">
-        <div class="col" style="align-items:center; gap:4px; position:relative; z-index:1;">
-          <div class="blabel" style="font-size:11px; color:var(--color-text-primary);">We're Proudly Picky</div>
-          <div class="bsub">1,000+ titles · 9 languages · 22 Indian publishers · 15+ intl</div>
-          <div class="cta-pill">Explore Our Collection</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="block fill-mid h-xl w-half img-placeholder">
-          <div class="blabel" style="position:relative; z-index:1;">Book collection grid</div>
-        </div>
-        <div class="block fill-warm h-xl w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel">Gift Vouchers & Return Presents</div>
-          <div class="bsub">₹100–₹20,000 vouchers · curated bundles · bulk gifting</div>
-          <div class="cta-pill">Gift Joy, Share Magic</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGE 5: SCHOOLS & LIBRARIES -->
-  <div class="page-section">
-    <div class="page-label">05 — Schools & Libraries</div>
-    <div class="page-frame">
-      <div class="block fill-hero h-hero w-full img-placeholder">
-        <div class="blabel" style="position:relative; z-index:1;">Schools Hero</div>
-      </div>
-      <div class="grid-3" style="border-top: 0.5px solid var(--color-border-secondary);">
-        <div class="block fill-soft h-xl">
-          <div class="blabel">Building Library Collections</div>
-          <div class="bsub">Diverse collections that support learning</div>
-          <div class="cta-pill">Build Your Library</div>
-        </div>
-        <div class="block fill-mid h-xl">
-          <div class="blabel">Bring in an Author</div>
-          <div class="bsub">Interactive sessions with storytellers</div>
-          <div class="cta-pill">Invite an Author</div>
-        </div>
-        <div class="block fill-accent h-xl">
-          <div class="blabel">Bookfairs & Book Weeks</div>
-          <div class="bsub">Pop-up fairs, immersive literary celebrations</div>
-          <div class="cta-pill">Plan a Book Week</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGE 6: OUTREACH -->
-  <div class="page-section">
-    <div class="page-label">06 — Outreach</div>
-    <div class="page-frame">
-      <div class="block fill-dark h-lg w-full">
-        <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">A Library in a Bag</div>
-        <div class="bsub">Stories spark imagination, but many children lack access.</div>
-      </div>
-      <div class="row">
-        <div class="block fill-warm h-xl" style="width:60%;">
-          <div class="blabel">Story Bags: Mini Libraries on the Move</div>
-          <div class="bsub">100 handpicked books per bag · reaches classrooms, homes, communities without libraries</div>
-          <div class="cta-pill">Gift a Story Bag</div>
-        </div>
-        <div class="block fill-mid h-xl img-placeholder" style="width:40%; border-left: 0.5px solid var(--color-border-tertiary);">
-          <div class="blabel" style="position:relative; z-index:1;">Story Bag photo</div>
-        </div>
-      </div>
-      <div class="grid-2" style="border-top: 0.5px solid var(--color-border-secondary);">
-        <div class="block fill-soft h-lg">
-          <div class="blabel">Collection Development</div>
-          <div class="bsub">Educators curate by language, context, student needs</div>
-          <div class="cta-pill">Visit Us to Curate</div>
-        </div>
-        <div class="block fill-accent h-lg">
-          <div class="blabel">Beyond Books</div>
-          <div class="bsub">Workshops, storytelling, author visits</div>
-          <div class="cta-pill">Book Training Sessions</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="page-section">
-    <div class="page-label">Footer</div>
-    <div class="page-frame">
-      <div class="grid-3" style="border: none;">
-        <div class="block fill-dark h-lg" style="border: none; align-items: flex-start; padding: 12px;">
-          <div class="blabel" style="color:var(--color-text-primary); margin-bottom:4px;">Kahani Tree</div>
-          <div class="bsub" style="text-align:left;">Mumbai's children's bookshop since 2007</div>
-          <div class="cta-pill" style="margin-top:6px;">WhatsApp us</div>
-        </div>
-        <div class="block fill-dark h-lg" style="border: none; border-left: 0.5px solid var(--color-border-tertiary); align-items: flex-start; padding: 12px;">
-          <div class="blabel" style="margin-bottom:4px;">Navigate</div>
-          <div class="bsub" style="text-align:left; line-height:1.8;">About Us · Book Events · Schools & Libraries · Outreach · Books & Gifts · Contact</div>
-        </div>
-        <div class="block fill-dark h-lg" style="border: none; border-left: 0.5px solid var(--color-border-tertiary); align-items: flex-start; padding: 12px;">
-          <div class="blabel" style="margin-bottom:4px;">Programs</div>
-          <div class="bsub" style="text-align:left; line-height:1.8;">Saturday Storytime · Book Clubs · Author Interactions · Book Fairs · Teacher Training</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
+
+<!-- PAGE 1: HOMEPAGE -->
+<div class="page-section">
+  <div class="page-label">01 — Homepage</div>
+  <div class="page-frame">
+    <div class="block fill-hero h-hero w-full img-placeholder">
+      <div class="col" style="align-items:center; gap:4px; position:relative; z-index:1;">
+        <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">Magic Awaits You</div>
+        <div class="bsub">Feel the colors. See the sound. Smell the paper. Touch the story.</div>
+        <div class="cta-pill">Welcome to Kahani Tree</div>
+      </div>
+    </div>
+    <div class="block fill-mid h-lg w-full">
+      <div class="blabel" style="font-style:italic; max-width:80%;">"We believe that stories are magical and expand a child's imagination." — Sangeeta</div>
+      <div style="display:flex; gap:8px; margin-top:6px;">
+        <div class="cta-pill">Our Story</div>
+        <div class="cta-pill">Take a Tour</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="block fill-soft h-lg w-half">
+        <div class="blabel">Celebrating Differences</div>
+        <div class="bsub">Our differences make us stronger</div>
+      </div>
+      <div class="col" style="width:50%;">
+        <div class="grid-3" style="border: none; border-top: 0.5px solid var(--color-border-tertiary); border-left: 0.5px solid var(--color-border-tertiary);">
+          <div class="block fill-mid h-sm"><div class="blabel">22+</div><div class="bsub">Indian Publishers</div></div>
+          <div class="block fill-mid h-sm"><div class="blabel">15+</div><div class="bsub">Intl Publishers</div></div>
+          <div class="block fill-mid h-sm"><div class="blabel">9</div><div class="bsub">Languages</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="block fill-mid h-md w-full">
+      <div class="blabel">Collections Carousel</div>
+      <div class="bsub">Celebrating Differences · Resilience · Kahani Favourites · Sangeeta Recommends · Breaking Stereotypes</div>
+      <div class="carousel-dots" style="margin-top:6px;">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="block fill-dark h-md w-full">
+      <div class="blabel">Impact Numbers</div>
+      <div class="grid-6" style="border:none; margin-top:6px; width:100%;">
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">5,000+</div><div class="bsub">Families</div></div>
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">500+</div><div class="bsub">Schools</div></div>
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">1,000+</div><div class="bsub">Books</div></div>
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">20 yrs</div><div class="bsub">Running</div></div>
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">100+</div><div class="bsub">Story Bags</div></div>
+        <div class="block" style="border:none; padding:2px;"><div class="blabel">∞</div><div class="bsub">Events</div></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="block fill-mid h-lg w-half">
+        <div class="blabel">Get Your Story On</div>
+        <div class="bsub">Saturday Storytime, festivals, book clubs, workshops</div>
+        <div class="cta-pill">Explore Book Events</div>
+      </div>
+      <div class="block fill-soft h-lg w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel">Once Upon a Library</div>
+        <div class="bsub">Schools, author visits, Book Weeks</div>
+        <div class="cta-pill">Learn More</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="block fill-accent h-md w-half">
+        <div class="blabel">We Don't Just Sell Books. We Raise Readers.</div>
+        <div class="bsub">It takes a village to raise one.</div>
+      </div>
+      <div class="block fill-warm h-md w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel">Story Bags</div>
+        <div class="bsub">100 handpicked books, portable mini-libraries</div>
+        <div class="cta-pill">Gift a Story Bag</div>
+      </div>
+    </div>
+    <div class="block fill-mid h-md w-full img-placeholder">
+      <div class="blabel" style="position:relative; z-index:1;">Testimonials Carousel</div>
+      <div class="carousel-dots" style="position:relative; z-index:1; margin-top:6px;">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="block fill-dark h-lg w-full">
+      <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">Be Part of the Story</div>
+      <div class="bsub">Visit, attend sessions, explore workshops, support Story Bags</div>
+      <div class="cta-pill">Join Us — Magic Awaits You</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: ABOUT US -->
+<div class="page-section">
+  <div class="page-label">02 — About Us</div>
+  <div class="page-frame">
+    <div class="block fill-hero h-hero w-full img-placeholder">
+      <div class="blabel" style="position:relative; z-index:1;">Full-screen hero image</div>
+    </div>
+    <div class="block fill-mid h-lg w-full">
+      <div class="blabel">Mumbai's beloved children's bookshop</div>
+      <div class="bsub">Curated picture books, graphic novels, diverse titles from India and beyond</div>
+    </div>
+    <div class="row">
+      <div class="block fill-soft h-xl w-half">
+        <div class="blabel">Founder Story</div>
+        <div class="bsub">2006 — Sangeeta recognized the lack of diverse Indian children's books. Kahani Tree began sourcing from across the country.</div>
+      </div>
+      <div class="block fill-mid h-xl w-half img-placeholder" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel" style="position:relative; z-index:1;">Founder photo</div>
+      </div>
+    </div>
+    <div class="block fill-accent h-md w-full">
+      <div class="blabel" style="font-style: italic;">"Visitors come for stories and leave with magic."</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: BOOK EVENTS -->
+<div class="page-section">
+  <div class="page-label">03 — Book Events</div>
+  <div class="page-frame">
+    <div class="block fill-hero h-hero w-full img-placeholder">
+      <div class="blabel" style="position:relative; z-index:1;">Book Events Hero</div>
+    </div>
+    <div class="row">
+      <div class="block fill-soft h-xl w-third">
+        <div class="blabel">Meet the Storytellers</div>
+        <div class="bsub">Authors bring stories to life through interactive sessions</div>
+        <div class="cta-pill">Join Us for Storytime</div>
+      </div>
+      <div class="block fill-mid h-xl w-third" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel">Festival Partners</div>
+        <div class="bsub">Kala Ghoda, Peek-a-Book, Royal Opera House</div>
+      </div>
+      <div class="block fill-warm h-xl w-third" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel">It Takes a Village</div>
+        <div class="bsub">BookTalk workshops for parents and educators</div>
+        <div class="cta-pill">Join a BookTalk</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: BOOKS & GIFTS -->
+<div class="page-section">
+  <div class="page-label">04 — Books & Gifts</div>
+  <div class="page-frame">
+    <div class="block fill-dark h-xl w-full img-placeholder">
+      <div class="col" style="align-items:center; gap:4px; position:relative; z-index:1;">
+        <div class="blabel" style="font-size:11px; color:var(--color-text-primary);">We're Proudly Picky</div>
+        <div class="bsub">1,000+ titles · 9 languages · 22 Indian publishers · 15+ intl</div>
+        <div class="cta-pill">Explore Our Collection</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="block fill-mid h-xl w-half img-placeholder">
+        <div class="blabel" style="position:relative; z-index:1;">Book collection grid</div>
+      </div>
+      <div class="block fill-warm h-xl w-half" style="border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel">Gift Vouchers & Return Presents</div>
+        <div class="bsub">₹100–₹20,000 vouchers · curated bundles · bulk gifting</div>
+        <div class="cta-pill">Gift Joy, Share Magic</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: SCHOOLS & LIBRARIES -->
+<div class="page-section">
+  <div class="page-label">05 — Schools & Libraries</div>
+  <div class="page-frame">
+    <div class="block fill-hero h-hero w-full img-placeholder">
+      <div class="blabel" style="position:relative; z-index:1;">Schools Hero</div>
+    </div>
+    <div class="grid-3" style="border-top: 0.5px solid var(--color-border-secondary);">
+      <div class="block fill-soft h-xl">
+        <div class="blabel">Building Library Collections</div>
+        <div class="bsub">Diverse collections that support learning</div>
+        <div class="cta-pill">Build Your Library</div>
+      </div>
+      <div class="block fill-mid h-xl">
+        <div class="blabel">Bring in an Author</div>
+        <div class="bsub">Interactive sessions with storytellers</div>
+        <div class="cta-pill">Invite an Author</div>
+      </div>
+      <div class="block fill-accent h-xl">
+        <div class="blabel">Bookfairs & Book Weeks</div>
+        <div class="bsub">Pop-up fairs, immersive literary celebrations</div>
+        <div class="cta-pill">Plan a Book Week</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: OUTREACH -->
+<div class="page-section">
+  <div class="page-label">06 — Outreach</div>
+  <div class="page-frame">
+    <div class="block fill-dark h-lg w-full">
+      <div class="blabel" style="font-size:12px; color:var(--color-text-primary);">A Library in a Bag</div>
+      <div class="bsub">Stories spark imagination, but many children lack access.</div>
+    </div>
+    <div class="row">
+      <div class="block fill-warm h-xl" style="width:60%;">
+        <div class="blabel">Story Bags: Mini Libraries on the Move</div>
+        <div class="bsub">100 handpicked books per bag · reaches classrooms, homes, communities without libraries</div>
+        <div class="cta-pill">Gift a Story Bag</div>
+      </div>
+      <div class="block fill-mid h-xl img-placeholder" style="width:40%; border-left: 0.5px solid var(--color-border-tertiary);">
+        <div class="blabel" style="position:relative; z-index:1;">Story Bag photo</div>
+      </div>
+    </div>
+    <div class="grid-2" style="border-top: 0.5px solid var(--color-border-secondary);">
+      <div class="block fill-soft h-lg">
+        <div class="blabel">Collection Development</div>
+        <div class="bsub">Educators curate by language, context, student needs</div>
+        <div class="cta-pill">Visit Us to Curate</div>
+      </div>
+      <div class="block fill-accent h-lg">
+        <div class="blabel">Beyond Books</div>
+        <div class="bsub">Workshops, storytelling, author visits</div>
+        <div class="cta-pill">Book Training Sessions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-section">
+  <div class="page-label">Footer</div>
+  <div class="page-frame">
+    <div class="grid-3" style="border: none;">
+      <div class="block fill-dark h-lg" style="border: none; align-items: flex-start; padding: 12px;">
+        <div class="blabel" style="color:var(--color-text-primary); margin-bottom:4px;">Kahani Tree</div>
+        <div class="bsub" style="text-align:left;">Mumbai's children's bookshop since 2007</div>
+        <div class="cta-pill" style="margin-top:6px;">WhatsApp us</div>
+      </div>
+      <div class="block fill-dark h-lg" style="border: none; border-left: 0.5px solid var(--color-border-tertiary); align-items: flex-start; padding: 12px;">
+        <div class="blabel" style="margin-bottom:4px;">Navigate</div>
+        <div class="bsub" style="text-align:left; line-height:1.8;">About Us · Book Events · Schools & Libraries · Outreach · Books & Gifts · Contact</div>
+      </div>
+      <div class="block fill-dark h-lg" style="border: none; border-left: 0.5px solid var(--color-border-tertiary); align-items: flex-start; padding: 12px;">
+        <div class="blabel" style="margin-bottom:4px;">Programs</div>
+        <div class="bsub" style="text-align:left; line-height:1.8;">Saturday Storytime · Book Clubs · Author Interactions · Book Fairs · Teacher Training</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
